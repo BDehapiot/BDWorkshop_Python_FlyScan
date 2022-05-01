@@ -4,5 +4,4 @@ scikit-image
 opencv-python
 matplotlib
 joblib
-jupyterlab
 napari
