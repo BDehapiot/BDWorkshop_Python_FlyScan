@@ -4,4 +4,4 @@ scikit-image
 opencv-python
 matplotlib
 joblib
-napari
+napari[all]
