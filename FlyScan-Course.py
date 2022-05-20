@@ -200,4 +200,34 @@ for props in regionprops(im_all_labels):
     im_all_props.append(temp_props)
 
 for props in im_all_props:        
-    print(props['centroid'])    
+    print(props['centroid']) 
+    
+#%% test 
+
+im_all_labels = np.zeros_like(im_all).astype('uint16')
+
+max_id = 0
+for i, mask in enumerate(im_all_mask):  
+    
+    labels = label(mask)     
+    labels[labels != 0] += max_id    
+    im_all_labels[i,...] = labels
+    
+    if np.max(labels) != 0:
+        max_id = np.max(labels)
+        
+im_all_props = []
+
+for props in regionprops(im_all_labels):   
+    
+    temp_props = {       
+        'label': props['label'],
+        'centroid': props['centroid'],
+        'area': props['area'],       
+        }
+    
+    im_all_props.append(temp_props)
+
+for props in im_all_props:        
+    print(props['centroid']) 
+
