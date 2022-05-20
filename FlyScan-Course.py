@@ -43,7 +43,7 @@ for i, path in enumerate(im_paths):
     im_all[i,...] = io.imread(path)  
     
 import napari
-viewer = napari.view_image(im_all)
+# viewer = napari.view_image(im_all)
 
 import matplotlib.pyplot as plt
 
@@ -110,6 +110,16 @@ im_all_mask = remove_small_objects(im_all_mask, min_size=50)
 plt.imshow(im_all_mask[0,275:375,40:140], cmap='gray')
 plt.show()
 
+plt.imshow(im_all_mask[12,0:100,20:120], cmap='gray')
+plt.show()
+
+from skimage.segmentation import clear_border
+
+im_all_mask = clear_border(im_all_mask)
+
+plt.imshow(im_all_mask[12,0:100,20:120], cmap='gray')
+plt.show()
+
 from skimage.morphology import dilation
 
 im_all_display = np.zeros_like(im_all)
@@ -119,7 +129,7 @@ for i, mask in enumerate(im_all_mask):
     outlines = outlines.astype('uint8')*255 
     im_all_display[i,...] = np.maximum(im_all[i,...], outlines)
     
-viewer = napari.view_image(im_all_display)
+# viewer = napari.view_image(im_all_display)
 
 def im_segment(im_all, thresh_coeff=1.0, gaussian_sigma=2.0, min_size=50):
         
@@ -143,6 +153,7 @@ def im_segment(im_all, thresh_coeff=1.0, gaussian_sigma=2.0, min_size=50):
     # get binary mask
     im_all_mask = gaussian(im_all_sub, 2, channel_axis=0) > thresh*thresh_coeff
     im_all_mask = remove_small_objects(im_all_mask, min_size=50)
+    im_all_mask = clear_border(im_all_mask)
     
     # make a display
     for i, mask in enumerate(im_all_mask): 
@@ -153,13 +164,13 @@ def im_segment(im_all, thresh_coeff=1.0, gaussian_sigma=2.0, min_size=50):
     return im_all_mask, im_all_display  
 
 im_all_mask, im_all_display = im_segment(im_all, thresh_coeff=1.0, gaussian_sigma=2.0, min_size=50)
-viewer = napari.view_image(im_all_display)
+# viewer = napari.view_image(im_all_display)
 
 #%%
 
 from skimage.morphology import label
 
-im_all_labels = np.zeros_like(im_all)
+im_all_labels = np.zeros_like(im_all).astype('uint16')
 for i, mask in enumerate(im_all_mask):       
     im_all_labels[i,...] = label(mask)
     
