@@ -222,8 +222,7 @@ for props in regionprops(im_all_labels):
     
     temp_props = {       
         'label': props['label'],
-        'centroid': props['centroid'],
-        'area': props['area'],       
+        'centroid': props['centroid'],      
         }
     
     im_all_props.append(temp_props)
@@ -231,3 +230,17 @@ for props in regionprops(im_all_labels):
 for props in im_all_props:        
     print(props['centroid']) 
 
+#%%
+
+chamber_mask = io.imread(Path('stock_files', 'DUP(HistMatch)_21-01-06_Pi04_Chamber-Mask.tif'))
+plt.imshow(chamber_mask, cmap='gray')
+plt.show()                         
+                        
+#%%
+
+for props in im_all_props:
+    ctrd_t = props['centroid'][0]
+    ctrd_x = props['centroid'][1]
+    ctrd_y = props['centroid'][2]
+    
+ 
