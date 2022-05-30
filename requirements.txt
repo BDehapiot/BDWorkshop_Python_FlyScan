@@ -1,7 +1,0 @@
-numpy
-scipy
-scikit-image
-opencv-python
-matplotlib
-joblib
-napari[all]
