@@ -1,4 +1,4 @@
-name: Python-ImageProcessing_2022
+name: BDCourse_2022_FlyScan
 
 channels:
     - conda-forge
