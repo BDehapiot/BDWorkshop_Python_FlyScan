@@ -1,6 +1,0 @@
-pyqt5==5.12.3
-numpy==1.22.3
-scikit-image==0.19.2
-matplotlib==3.5.2
-napari[all]==0.4.15
-jupyterlab

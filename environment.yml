@@ -1,13 +1,18 @@
-name: BDCourse_2022_FlyScan
+name: FlyScan
 
 channels:
-    - conda-forge
+  - conda-forge
 
 dependencies:
-    - python=3.8
-    - pyqt=5.12.3
-    - numpy=1.22.3
-    - scikit-image=0.19.2
-    - matplotlib=3.5.2
-    - napari[all]=0.4.15
-    - jupyterlab
+  # conda_core
+  - python=3.10
+  - numpy=1.24*
+  - scikit-image
+  - matplotlib-base
+  - pip
+  # conda_spec
+  - napari
+  - pyqt
+  - pip:
+    # pip_core
+    # pip_spec
