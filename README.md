@@ -3,7 +3,7 @@
 ![Date Badge](https://img.shields.io/badge/Created-2022--04--29-blue?labelColor=rgb(50%2C60%2C65)&color=rgb(149%2C157%2C165))
 ![License Badge](https://img.shields.io/badge/Licence-GNU%20General%20Public%20License%20v3.0-blue?labelColor=rgb(50%2C60%2C65)&color=rgb(149%2C157%2C165))     
 
-# BDCourse_Python_FlyScan  
+# BDWorkshop_Python_FlyScan
 Set up an automated fly detection procedure with Python
 
 ## Index
